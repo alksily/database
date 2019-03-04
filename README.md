@@ -46,7 +46,7 @@ $container = $app->getContainer();
 $container['database'] = function ($c) {
     $settings = $c->get('settings')['database'];
 
-    $db = new Db($settings);
+    $db = new AEngine\Slim\Database\Db($settings);
 
     return $db;
 };
