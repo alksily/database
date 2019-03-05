@@ -1,15 +1,13 @@
 {
-    "name": "aengine/slim-database",
-    "description": "Database extension for Slim Framework by AEngine",
+    "name": "aengine/database",
+    "description": "Database is PDO wrapper",
     "keywords": [
         "php",
-        "framework",
         "AEngine",
-        "Slim",
         "Database",
         "PDO"
     ],
-    "homepage": "https://github.com/AEngine/slim-database",
+    "homepage": "https://github.com/AEngine/database",
     "license": "MIT",
     "authors": [
         {
@@ -25,7 +23,7 @@
     },
     "autoload": {
         "psr-4": {
-            "AEngine\\Slim\\Database\\": "src/"
+            "AEngine\\Database\\": "src/"
         }
     }
 }

@@ -1,7 +1,8 @@
 <?php
 
-namespace AEngine\Slim\Database;
+namespace AEngine\Database;
 
+use AEngine\Database\Exception\DatabaseException;
 use PDO;
 use PDOException;
 use PDOStatement;
@@ -56,7 +57,7 @@ class Db
                         $config['options']
                     );
                 } catch (PDOException $ex) {
-                    throw new DBException(
+                    throw new DatabaseException(
                         'The connection to the database server fails (' . $ex->getMessage() . ')',
                         0,
                         $ex

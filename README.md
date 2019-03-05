@@ -1,15 +1,14 @@
-AEngine Slim Database
+AEngine Database
 ====
 It allows you connect the database to a project using a wrapper around the PDO.
 
 #### Requirements
 * PHP >= 7.0
-* Slim >= 3.0.0
 
 #### Installation
 Run the following command in the root directory of your web project:
   
-> `composer require aengine/slim-database`
+> `composer require aengine/database`
 
 #### Usage
 
@@ -41,45 +40,49 @@ return [
 
 Add function in DI by edit `src/dependencies.php` file
 ```php
-$container = $app->getContainer();
-
-// register database plugin
-$container['database'] = function ($c) {
-    $settings = $c->get('settings')['database'];
-
-    $db = new AEngine\Slim\Database\Db($settings);
-
-    return $db;
-};
+$db = new AEngine\Database\Db([
+    [
+        'dsn' => 'mysql:host=HOST;dbname=DB_NAME',
+        'username' => 'DB_USER',
+        'password' => 'DB_PASS',
+        // additional can be passed options, server-role and pool name:
+        // 'option'     => [
+        //     PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'UTF8'",
+        //     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        // ],
+        // 'role'       => 'master', // or slave
+        // 'pool_name'  => 'default', // pool list of connections
+    ],
+    // possible another connection config
+    // for the implementation of master-slave
+]);
 ```
 
 Query execution
 ```php
-$app->get('/example-route', function ($request, $response, $args) {
-    $stm = $this->database->query('SELECT * FROM `user` WHERE `age` > 23');
-    
-    while ($a = $stm->fetch(PDO::FETCH_ASSOC)) {
-        // some action
-        var_dump($a);
-    }
-});
+$stm = $db->query('SELECT * FROM `user` WHERE `age` > 23');
+
+while ($a = $stm->fetch(PDO::FETCH_ASSOC)) {
+    // some action
+    var_dump($a);
+}
 ```
 
 #### Aliases
 
 Select rows
 ```php 
-$list = $this->database->select('SELECT * FROM `products` WHERE `price` >= 150');
+$list = $db->select('SELECT * FROM `products` WHERE `price` >= 150');
 ```
 
 Select first element of array from `select` method
 ```php 
-$first = $this->database->selectOne('SELECT * FROM `products` WHERE `price` >= 150');
+$first = $db->selectOne('SELECT * FROM `products` WHERE `price` >= 150');
 ```
 
 Affect row and return count of affected
 ```php 
-$affected = $this->database->affect('INSERT INTO `products` SET `name` = "Socks with owls", `price` = 200');
+$affected = $db->affect('INSERT INTO `products` SET `name` = "Socks with owls", `price` = 200');
 ```
 
 #### Contributing
