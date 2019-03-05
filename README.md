@@ -4,6 +4,7 @@ It allows you connect the database to a project using a wrapper around the PDO.
 
 #### Requirements
 * PHP >= 7.0
+* Slim >= 3.0.0
 
 #### Installation
 Run the following command in the root directory of your web project:
