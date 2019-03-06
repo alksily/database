@@ -89,4 +89,4 @@ $affected = $db->affect('INSERT INTO `products` SET `name` = "Socks with owls", 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 #### License
-The Orchid Database is licensed under the MIT license. See [License File](LICENSE.md) for more information.
+The AEngine Database is licensed under the MIT license. See [License File](LICENSE.md) for more information.
