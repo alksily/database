@@ -11,36 +11,8 @@ Run the following command in the root directory of your web project:
 > `composer require aengine/database`
 
 #### Usage
-
-Add params in `src/settings.php` file
 ```php
-return [
-    'settings' => [
-        'displayErrorDetails' => true, // set to false in production
-        'addContentLengthHeader' => false, // Allow the web server to send the content-length header
-
-        // Database settings
-        'database' => [
-            [
-                'dsn' => 'mysql:host=HOST;dbname=DB_NAME',
-                'username' => 'DB_USER',
-                'password' => 'DB_PASS',
-                // additional can be passed options, server-role and pool name:
-                // 'option'     => [
-                //     PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'UTF8'",
-                //     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-                // ],
-                // 'role'       => 'master', // or slave
-                // 'pool_name'  => 'default', // pool list of connections
-            ],
-            // possible another connection config
-            // for the implementation of master-slave
-        ], ...
-```
-
-Add function in DI by edit `src/dependencies.php` file
-```php
-$db = new AEngine\Database\Db([
+AEngine\Database\Db::initialize([
     [
         'dsn' => 'mysql:host=HOST;dbname=DB_NAME',
         'username' => 'DB_USER',
@@ -60,7 +32,7 @@ $db = new AEngine\Database\Db([
 
 Query execution
 ```php
-$stm = $db->query('SELECT * FROM `user` WHERE `age` > 23');
+$stm = AEngine\Database\Db::query('SELECT * FROM `user` WHERE `age` > 23');
 
 while ($a = $stm->fetch(PDO::FETCH_ASSOC)) {
     // some action
