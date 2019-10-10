@@ -1,6 +1,6 @@
 <?php
 
-namespace AEngine\Database\Exception;
+namespace Alksily\Database\Exception;
 
 use Exception;
 

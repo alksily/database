@@ -1,8 +1,8 @@
 <?php
 
-namespace AEngine\Database;
+namespace Alksily\Database;
 
-use AEngine\Database\Exception\DatabaseException;
+use Alksily\Database\Exception\DatabaseException;
 use PDO;
 use PDOException;
 use PDOStatement;
@@ -123,7 +123,7 @@ class Db
          static::$lastQuery =  static::$lastConnection->prepare($query);
          static::$lastQuery->execute($params);
 
-        return  static::$lastQuery;
+        return static::$lastQuery;
     }
 
     /**

@@ -1,13 +1,12 @@
 {
-    "name": "aengine/database",
+    "name": "alksily/database",
     "description": "Database is PDO wrapper",
     "keywords": [
         "php",
-        "AEngine",
         "Database",
         "PDO"
     ],
-    "homepage": "https://github.com/AEngine/database",
+    "homepage": "https://github.com/alksily/database",
     "license": "MIT",
     "authors": [
         {
@@ -23,7 +22,7 @@
     },
     "autoload": {
         "psr-4": {
-            "AEngine\\Database\\": "src/"
+            "Alksily\\Database\\": "src/"
         }
     }
 }

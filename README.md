@@ -1,4 +1,4 @@
-AEngine Database
+Database Component
 ====
 It allows you connect the database to a project using a wrapper around the PDO.
 
@@ -8,11 +8,11 @@ It allows you connect the database to a project using a wrapper around the PDO.
 #### Installation
 Run the following command in the root directory of your web project:
   
-> `composer require aengine/database`
+> `composer require alksily/database`
 
 #### Usage
 ```php
-AEngine\Database\Db::initialize([
+Alksily\Database\Db::initialize([
     [
         'dsn' => 'mysql:host=HOST;dbname=DB_NAME',
         'username' => 'DB_USER',
@@ -32,7 +32,7 @@ AEngine\Database\Db::initialize([
 
 Query execution
 ```php
-$stm = AEngine\Database\Db::query('SELECT * FROM `user` WHERE `age` > 23');
+$stm = Alksily\Database\Db::query('SELECT * FROM `user` WHERE `age` > 23');
 
 while ($a = $stm->fetch(PDO::FETCH_ASSOC)) {
     // some action
@@ -61,4 +61,4 @@ $affected = $db->affect('INSERT INTO `products` SET `name` = "Socks with owls", 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 #### License
-The AEngine Database is licensed under the MIT license. See [License File](LICENSE.md) for more information.
+The Alksily Database is licensed under the MIT license. See [License File](LICENSE.md) for more information.
